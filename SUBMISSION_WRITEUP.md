@@ -13,24 +13,26 @@ The **hr-onboarder-agent** solves this by providing a secure, automated, and mul
 ```mermaid
 graph TD
     START[START Node] --> SEC[Security Checkpoint Node]
-    SEC -- "SECURITY_EVENT (PII Scrubbed / Prompt Injection / No Consent)" --> SEC_FAIL[Security Failed Terminal Node]
+    
+    SEC -- "SECURITY_EVENT<br>(PII Scrubbed / Prompt Injection / No Consent)" --> SEC_FAIL[Security Failed Terminal Node]
     SEC -- "CLEAN (Safe Input)" --> ORCH[Orchestrate Onboarding Node]
     
-    subgraph Multi-Agent System
+    subgraph "Multi-Agent System"
         ORCH --> COORD[hr_coordinator Agent]
         COORD -- "AgentTool" --> DOC_SPEC[document_specialist Agent]
         COORD -- "AgentTool" --> TRAIN_SPEC[training_specialist Agent]
     end
     
-    subgraph MCP Server
+    subgraph "MCP Server (app/mcp_server.py)"
         DOC_SPEC --> MCP[MCP Server Tools]
         TRAIN_SPEC --> MCP
+        MCP --> DB[(In-Memory Database)]
     end
     
-    ORCH -- "AUTO_APPROVE (Informational / Query)" --> PROC_OUT[Process Output Terminal Node]
-    ORCH -- "NEEDS_APPROVAL (Action requiring sign-off)" --> HITL[Human Approval Node]
+    ORCH -- "AUTO_APPROVE<br>(Informational / General Queries)" --> PROC_OUT[Process Output Terminal Node]
+    ORCH -- "NEEDS_APPROVAL<br>(Actions requiring manager sign-off)" --> HITL[Human Approval Node]
     
-    HITL -- "RequestInput (Manager review pause)" --> PROC_OUT
+    HITL -- "RequestInput<br>(Pause for Manager Decision)" --> PROC_OUT
 ```
 
 ---
