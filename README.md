@@ -31,9 +31,6 @@ Built on top of the **Google Vertex AI SDK & ADK (Agent Development Kit)**, this
 
 ## 📂 Project Architecture
 
-### Workflow Graph
-![Workflow Graph](./assets/architecture_graph.png)
-
 ### Architectural Flow (Mermaid)
 ```mermaid
 graph TD
