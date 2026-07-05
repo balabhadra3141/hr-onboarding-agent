@@ -48,7 +48,7 @@ graph TD
         COORD -- "AgentTool" --> TRAIN_SPEC[training_specialist Agent]
     end
     
-    subgraph MCP Server (app/mcp_server.py)
+    subgraph "MCP Server (app/mcp_server.py)"
         DOC_SPEC --> MCP[MCP Server Tools]
         TRAIN_SPEC --> MCP
         MCP --> DB[(In-Memory Database)]
@@ -194,19 +194,16 @@ uv run pytest
 
 ---
 
-## 🎨 Visual Assets
+## 🎨 Visual Assets & Demo Video
 
-### System Architecture
+### Narration Demo Video (Click to watch!)
+[![Onboarding Agent Demo video](./assets/thumbnail.png)](https://youtu.be/oM9DT13TaL4)
+
+### System Architecture Diagram
 ![Architecture Diagram](./assets/architecture_diagram.png)
 
 ### Workflow Graph
 ![Workflow Graph](./assets/architecture_graph.png)
-
-### Project Banner
-![Cover Banner](./assets/cover_page_banner.png)
-
-### Project Thumbnail
-![Thumbnail](./assets/thumbnail.png)
 
 ---
 
